@@ -16,7 +16,7 @@ HEADERS = {
 #   Функция получения страници в HTML формате
 def get_url(url):
     response = requests.get(url=url, headers=HEADERS)  # Запрос к URL и подставление нашего USER-AGENT
-    print(response.status_code)
+    # print(response.status_code)
     return response.text  # Возвращение полученой страници в HTML формате
 
 
@@ -54,25 +54,25 @@ def get_parsing_html(html):
         try:
             title = el.find('div', class_="iva-item-titleStep-pdebR").text
         except Exception:
-            return f'No vacancy'
+            title = f'No vacancy'
 
         #   Поиск зарплаты
         try:
             price = el.find('div', class_="iva-item-priceStep-uq2CQ").text.replace('\xa0', ' ')
         except Exception:
-            return f'No price'
+            price = f'No price'
 
         #   Поиск ссылки
         try:
             links = el.find('div', class_="iva-item-titleStep-pdebR").find('a').get('href')
         except Exception:
-            return f'No link'
+            links = f'No link'
 
         # Поиск названия города
         try:
             city = el.find('div', class_="geo-georeferences-SEtee text-text-LurtD text-size-s-BxGpL").text
         except Exception:
-            return f'No city'
+            city = f'No city'
 
         lists.append(
             f'Вакансия №{nam}\n'
@@ -101,7 +101,7 @@ def main():
         html = f'{get_url(url)}'
         data = get_parsing_html(html)    # 2-я функция, подстовляем полученный предыдущей функцией html
         writer(data)    # 3-я функция, записываем полученный предыдущей функцией результат в TXT формат
-        print(url)
+        # print(url)
 
 
 #   Запуск функции
