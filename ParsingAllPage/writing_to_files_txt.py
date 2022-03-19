@@ -3,6 +3,12 @@ import requests
 from bs4 import BeautifulSoup
 from user_agent import user_a
 
+
+#   Если вы собираетесь спарсить много страниц без подмены PROXY либо временного промежутка,
+#   то сервер выдаст 429 ошибку.
+#   Ошибка 429 означает, что пользователь посылает слишком много запросов
+#   за короткий временной промежуток.
+
 URL = 'https://www.avito.ru/arhangelskaya_oblast/vakansii'
 HOST = 'https://www.avito.ru'
 
