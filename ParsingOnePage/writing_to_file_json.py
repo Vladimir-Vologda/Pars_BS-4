@@ -39,16 +39,23 @@ def get_parsing_html(html):
             nam += 1
 
             #   Поиск названия должности
-            title = el.find('div', class_="iva-item-titleStep-pdebR").text
-
+            try:
+                title = el.find('div', class_="iva-item-titleStep-pdebR").text
+            except Exception:
+                title = f'No title'
             #   Поиск зарплаты
             price = el.find('div', class_="iva-item-priceStep-uq2CQ").text.replace('\xa0', ' ')
 
             #   Поиск ссылки
-            links = el.find('div', class_="iva-item-titleStep-pdebR").find('a').get('href')
-
+            try:
+                links = el.find('div', class_="iva-item-titleStep-pdebR").find('a').get('href')
+            except Exception:
+                links = f'No links'
             # Поиск названия города
-            city = el.find('div', class_="geo-georeferences-SEtee text-text-LurtD text-size-s-BxGpL").text
+            try:
+                city = el.find('div', class_="geo-georeferences-SEtee text-text-LurtD text-size-s-BxGpL").text
+            except Exception:
+                city = f'No city'
 
             lists.append({
                 '№': nam,
