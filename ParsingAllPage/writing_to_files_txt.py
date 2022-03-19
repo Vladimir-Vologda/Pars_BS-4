@@ -1,6 +1,9 @@
 #   Импорт требующихся библиотек
+from time import sleep
+
 import requests
 from bs4 import BeautifulSoup
+
 from user_agent import user_a
 
 
@@ -103,11 +106,15 @@ def main():
     number = get_all_page(html)
     num = int(number)
     for i in range(1, num+1):
+        #   Sleep: замарозка процесса на указанное количество секунд,
+        #   таким образом, каждый запрос к серверу будет разделён определённым количеством временеи,
+        #   токой метод долгий, но не нуждается в PROXY.
+        sleep(10)
         url = f'{URL}?p={i}'
         html = f'{get_url(url)}'
         data = get_parsing_html(html)    # 2-я функция, подстовляем полученный предыдущей функцией html
         writer(data)    # 3-я функция, записываем полученный предыдущей функцией результат в TXT формат
-        # print(url)
+        print(url)
 
 
 #   Запуск функции
