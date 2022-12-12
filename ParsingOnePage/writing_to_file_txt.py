@@ -8,7 +8,7 @@ HOST = 'https://www.avito.ru'
 
 #   HEADERS: для того, что бы requests выглядел как с браузера
 HEADERS = {
-    'UserAgent': f'{user_a()}',
+    'User-Agent': f'{user_a()}',
     'Accept-Language': 'ru, en; q = 1',
 }
 
